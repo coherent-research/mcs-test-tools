@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "McsResultHost": {
+      "commandName": "Project",
+      "commandLineArgs": "-p 5001"
+    }
+  }
+}
