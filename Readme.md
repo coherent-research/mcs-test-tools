@@ -5,9 +5,10 @@ This tool will take a CSV file containg data collection requests and send them t
 The CSV file must be in the same format as an MTS batch file. The syntax for the command is
 
 ```
-requestClient -i <INPUT_FILE>
+requestClient -i <INPUT_FILE> [-p <PRIORITY>]
 ```
-where INPUT_FILE is the path to the CSV file.
+where INPUT_FILE is the path to the CSV file and PRIORITY is the priority given
+to all requests (default = 1).
 
 The tool requires 2 other settings which are defined in the *appSettings.json* file. These are:
 
