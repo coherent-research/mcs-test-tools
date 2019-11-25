@@ -2,7 +2,7 @@
   "profiles": {
     "McsResultHost": {
       "commandName": "Project",
-      "commandLineArgs": "-p 5001"
+      "commandLineArgs": "-p 5001 -d c:\\temp"
     }
   }
 }

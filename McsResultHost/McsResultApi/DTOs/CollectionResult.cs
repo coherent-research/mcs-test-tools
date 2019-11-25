@@ -5,6 +5,7 @@ using System.Text;
 namespace Coherent.McsResultHost.McsResultApi.DTOs {
   public class CollectionResult {
     public string RequestReference { get; set; } = "";
+    public string Mpan { get; set; } = "";
     public string MeterType { get; set; } = "";
     public string RemoteAddress { get; set; } = "";
     public string ComsSettings { get; set; } = "";
@@ -21,6 +22,7 @@ namespace Coherent.McsResultHost.McsResultApi.DTOs {
     public string SerialNumber { get; set; } = "";
     public string MeterTime { get; set; } = "";
     public string TimeAdjustmentResult { get; set; } = "";
+    public List<string> StatusEvents { get; set; }
     public List<RegisterValue> RegisterValues { get; set; } = new List<RegisterValue>();
     public List<RegisterSurveyData> SurveyData { get; set; } = new List<RegisterSurveyData>();
   }

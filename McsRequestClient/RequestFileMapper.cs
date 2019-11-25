@@ -30,7 +30,7 @@ namespace Coherent.McsRequestClient {
   }
   public class ColletionRequestClassMap : ClassMap<CollectionRequest> {
     public ColletionRequestClassMap() {
-      Map(m => m.RequestReference).Name("MPAN");
+      Map(m => m.Mpan).Name("MPAN");
       Map(m => m.MeterType).Name("METER_TYPE").Default("");
       Map(m => m.RemoteAddress).Name("REMOTE_ADDRESS");
       Map(m => m.ComsSettings).Name("COM_SETTINGS").Default("");

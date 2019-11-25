@@ -2,7 +2,8 @@
 
 namespace Coherent.McsRequestClient {
   public class CollectionRequest {
-    public string RequestReference { get; set; }
+    public string RequestReference { get; set; } = "";
+    public string Mpan { get; set; } = "";
     public string ResponseUrl { get; set; } = "";
     public DateTime? DelayUntil { get; set; }
     public int Priority { get; set; } = 1;

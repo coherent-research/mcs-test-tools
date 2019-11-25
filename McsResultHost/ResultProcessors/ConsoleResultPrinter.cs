@@ -5,10 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Coherent.McsResultHost {
+namespace Coherent.McsResultHost.ResultProcessors {
   public class ConsoleResultPrinter: IResultProcessor {
+    public ConsoleResultPrinter(object consoleLock, IResultProcessor nextProcessor = null) {
+      this.consoleLock = consoleLock;
+      this.nextProcessor = nextProcessor;
+    }
     public void Process(CollectionResult collectionResult) {
       lock (consoleLock) {
+        var fg = Console.ForegroundColor;
         var timestamp = DateTime.Now.ToString(TimeFmt);
         SetConsoleColour(collectionResult.Result);
         Console.WriteLine(Line);
@@ -24,7 +29,11 @@ namespace Coherent.McsResultHost {
         Console.WriteLine($"{surveyData}");
         Console.WriteLine(Line);
         Console.WriteLine();
+        Console.ForegroundColor = fg;
       }
+      if(nextProcessor != null) {
+        nextProcessor.Process(collectionResult);
+      }    
     }
 
 
@@ -69,6 +78,7 @@ namespace Coherent.McsResultHost {
 
     const string Line = "====================================================================================================";
     const string TimeFmt = "yyyy-MM-dd HH:mm:ss";
-    readonly object consoleLock = new object();
+    readonly object consoleLock;
+    readonly IResultProcessor nextProcessor;
   }
 }

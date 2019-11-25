@@ -1,7 +1,8 @@
 {
   "profiles": {
     "McsRequestClient": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "-i \"C:\\Users\\tim.CT\\Desktop\\PreTestMin.csv\""
     }
   }
 }

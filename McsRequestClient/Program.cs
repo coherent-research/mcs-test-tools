@@ -38,7 +38,7 @@ namespace Coherent.McsRequestClient {
           r.RequestReference = Guid.NewGuid().ToString();
           r.ResponseUrl = settings.McsResultUrl;
           r.Priority = options.Priority;
-          OutputInfo($"Sending request {r.RequestReference} for meter: {r.MeterType} - {r.RemoteAddress}");
+          OutputInfo($"Sending request {r.RequestReference} for meter: {r.Mpan} [{r.MeterType} - {r.RemoteAddress}]");
           var postResult = client.PostAsJsonAsync(url, r).Result;
           if (postResult.IsSuccessStatusCode) {
             OutputInfo("Request accepted");

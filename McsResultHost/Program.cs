@@ -1,4 +1,5 @@
 ﻿using Coherent.McsResultHost.McsResultApi;
+using Coherent.McsResultHost.ResultProcessors;
 using CommandLine;
 using System;
 
@@ -11,11 +12,12 @@ namespace Coherent.McsResultHost {
              });
 
     }
+    readonly static object consoleLock = new object();
     static void Process(CommandOptions options) {
       try {
         int listeningPort = options.Port;
         var fg = Console.ForegroundColor;
-        ApiHost.Start(new ConsoleResultPrinter(), listeningPort);
+        ApiHost.Start(new ConsoleResultPrinter(consoleLock, new ResultFileWriter(options.Directory, consoleLock)), listeningPort);
         Console.WriteLine($"Awaiting collection results on port {listeningPort}");
         Console.WriteLine("Hit ENTER to exit");
         Console.ReadLine();

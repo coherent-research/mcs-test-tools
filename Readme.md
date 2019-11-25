@@ -21,10 +21,17 @@ This tool implements the MCS Result Service and listens for results from the MCS
 The sytnax for the command is:
 
 ```
-resultHost -p <LISTENING_PORT>
-``` 
-where LISTENING_PORT is the TCP port used to listening for incoming resuts.
+resultHost -p <LISTENING_PORT> [-d <OUTPUT_DIRECTORY>]
+```  
+where LISTENING_PORT is the TCP port used to listening for incoming resuts 
+and OUTPUT_DIRECTORY is the optional path where the results are output. 
 
+Valid examples
+```
+resultHost -p 5000
+resultHost -p 5000 -d C:\Data
+resultHost -p 5000 -d "C:\My directory"
+```
 
 # System requirement
 To run either of these tools the .NET Core runtime version 2.2.x must be installed. This can be downloaded from
