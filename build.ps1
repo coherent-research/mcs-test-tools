@@ -6,10 +6,10 @@ $mcsResultHostPublishPath = 'C:\Development\McsTestTools\McsResultHost\bin\Relea
 $zipPath = 'C:\Temp'
 
 Write-Host "Cleaning"
-& $msbuild '/verbosity:m', '/t:Clean'
+& $msbuild '/verbosity:m', '/target:Clean', '/property:Configuration=Release'
 
 Write-Host "Building"
-& $msbuild '/verbosity:m', '/t:Publish'
+& $msbuild '/verbosity:m', '/target:Publish', '/property:Configuration=Release'
 
 Write-Host 
 

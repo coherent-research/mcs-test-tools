@@ -6,5 +6,6 @@ namespace Coherent.McsResultHost.McsResultApi.DTOs {
   public class ReadingValue {
     public double Value { get; set; }
     public DateTime Timestamp { get; set; }
+    public uint StatusFlags { get; set; }
   }
 }

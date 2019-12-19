@@ -51,7 +51,7 @@ namespace Coherent.McsResultHost.ResultProcessors {
           sw.WriteLine($"Serial number: {collectionResult.SerialNumber}");
           sw.WriteLine($"Meter time: {collectionResult.MeterTime}");
           sw.WriteLine($"Time adjustment result: {collectionResult.TimeAdjustmentResult}");
-          sw.WriteLine($"Status events: {string.Join(", ", collectionResult.StatusEvents)}");
+          sw.WriteLine($"Status flags: {string.Join(", ", collectionResult.StatusEvents)}");
           foreach(var rv in collectionResult.RegisterValues) {
             sw.WriteLine($"{rv.Name}: {rv.Value} {rv.Units}");
           }
@@ -68,7 +68,7 @@ namespace Coherent.McsResultHost.ResultProcessors {
         sw.WriteLine(DataHeader);
         foreach(var sd in collectionResult.SurveyData) {
           foreach(var r in sd.Readings) {
-            sw.WriteLine($"{collectionResult.Mpan}, {sd.Name}, {FormatTimestamp(r.Timestamp)}, {r.Value}, {sd.Units}");
+            sw.WriteLine($"{collectionResult.Mpan}, {sd.Name}, {FormatTimestamp(r.Timestamp)}, {r.Value}, {sd.Units}, {r.StatusFlags}");
           }
         }
       }
@@ -90,7 +90,7 @@ namespace Coherent.McsResultHost.ResultProcessors {
         return "";
       }
     }
-    const string DataHeader = "MPAN, Register, Timestamp, Value, Unit";
+    const string DataHeader = "MPAN, Register, Timestamp, Value, Unit, StatusFlags";
     readonly string directory;
     readonly IResultProcessor nextProcessor;
     readonly object consoleLock;

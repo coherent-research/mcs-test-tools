@@ -69,7 +69,15 @@ namespace Coherent.McsResultHost.ResultProcessors {
         var count = registerSurveyData.Count();
         var start = registerSurveyData.First().Timestamp.ToString(TimeFmt);
         var finish = registerSurveyData.Last().Timestamp.AddMinutes(30).ToString(TimeFmt);
-        return $"{count} readings from {start} to {finish}";
+        var statusFlagCount = registerSurveyData.Count(r => r.StatusFlags != 0);
+        if(statusFlagCount > 0) {
+          var statusFlagSummary = $"Status flags set for {statusFlagCount} reading(s)";
+          return $"{count} readings from {start} to {finish} [{statusFlagSummary}]";
+        }
+        else {
+          return $"{count} readings from {start} to {finish}";
+        }
+
       }
       else {
         return "None";
